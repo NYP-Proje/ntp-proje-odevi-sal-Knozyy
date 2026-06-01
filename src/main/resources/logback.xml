@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <appender name="KONSOL" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss} [%level] %logger{0} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DOSYA" class="ch.qos.logback.core.FileAppender">
+        <file>logs/uygulama.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%level] %logger{0} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.google" level="WARN"/>
+    <logger name="io.grpc" level="WARN"/>
+    <logger name="io.netty" level="WARN"/>
+
+    <root level="INFO">
+        <appender-ref ref="KONSOL"/>
+        <appender-ref ref="DOSYA"/>
+    </root>
+
+</configuration>
