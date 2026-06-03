@@ -68,7 +68,7 @@ Bu admin ile girip öğretmen/öğrenci hesapları ve ders oluşturabilirsin.
 
 ---
 
-##  Demo Akışı (jüri sunumu)
+##  Demo Akışı
 1. **Admin** ile giriş yap.
 2. **Hesap Yönetimi:** bir öğretmen + bir öğrenci hesabı oluştur.
 3. **Ders Yönetimi:** öğretmeni seçip kontenjanlı bir ders aç.
