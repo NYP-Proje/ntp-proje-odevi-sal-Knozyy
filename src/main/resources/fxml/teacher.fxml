@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.okul.controller.TeacherController"
+      spacing="10" prefWidth="720" prefHeight="580">
+    <padding>
+        <Insets top="12" right="12" bottom="12" left="12"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="welcomeLabel" text="Ogretmen Paneli" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Cikis" onAction="#handleLogout"/>
+    </HBox>
+
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label text="Ders:"/>
+        <ComboBox fx:id="myCoursesCombo" promptText="Dersiniz" prefWidth="280"/>
+        <Button text="Dersi Yukle" onAction="#handleLoadCourse"/>
+    </HBox>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <Tab text="Duyurular">
+            <VBox spacing="8">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <Label text="Yeni Duyuru" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="annTitleField" promptText="Baslik"/>
+                <TextArea fx:id="annContentArea" promptText="Icerik" prefRowCount="3"/>
+                <Button text="Duyuru Yayinla" onAction="#handlePostAnnouncement"/>
+                <Label text="Bu Dersin Duyurulari" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="announcementsList" prefHeight="240"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Odevler">
+            <VBox spacing="8">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <Label text="Yeni Odev" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="asgTitleField" promptText="Odev Basligi"/>
+                <TextArea fx:id="asgDescArea" promptText="Aciklama" prefRowCount="2"/>
+                <TextField fx:id="asgDueField" promptText="Son Teslim Tarihi (orn 2026-06-15)"/>
+                <Button text="Odev Olustur" onAction="#handleCreateAssignment"/>
+
+                <Label text="Teslimleri Goruntule" style="-fx-font-weight: bold;"/>
+                <HBox spacing="8">
+                    <ComboBox fx:id="assignmentsCombo" promptText="Odev sec" prefWidth="280"/>
+                    <Button text="Teslimleri Goster" onAction="#handleShowSubmissions"/>
+                </HBox>
+                <ListView fx:id="submissionsList" prefHeight="200"/>
+                <Button text="Secili Dosyayi Ac" onAction="#handleOpenFile"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Notlar">
+            <VBox spacing="8">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <Label text="Not Girisi" style="-fx-font-weight: bold;"/>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <ComboBox fx:id="gradeStudentCombo" promptText="Ogrenci sec" prefWidth="260"/>
+                    <TextField fx:id="scoreField" promptText="Not (0-100)"/>
+                    <Button text="Notu Kaydet" onAction="#handleAssignGrade"/>
+                </HBox>
+
+                <Label text="Basari Siralamasi" style="-fx-font-weight: bold;"/>
+                <Button text="Siralamayi Goster" onAction="#handleShowRanking"/>
+                <ListView fx:id="rankingList" prefHeight="260"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.okul.controller.StudentController"
+      spacing="10" prefWidth="720" prefHeight="580">
+    <padding>
+        <Insets top="12" right="12" bottom="12" left="12"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="welcomeLabel" text="Ogrenci Paneli" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Cikis" onAction="#handleLogout"/>
+    </HBox>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <Tab text="Ders Kaydi">
+            <VBox spacing="8">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <Label text="Acik Dersler" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="availableCoursesList" prefHeight="200"/>
+                <Button text="Secili Derse Kayit Ol" onAction="#handleEnroll"/>
+
+                <Label text="Kayitli Derslerim" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="myCoursesList" prefHeight="180"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Odevler ve Duyurular">
+            <VBox spacing="8">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Ders:"/>
+                    <ComboBox fx:id="courseCombo" promptText="Kayitli dersiniz" prefWidth="280"/>
+                    <Button text="Goster" onAction="#handleLoadStudentCourse"/>
+                </HBox>
+
+                <Label text="Odevler" style="-fx-font-weight: bold;"/>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <ComboBox fx:id="assignmentsCombo" promptText="Odev sec" prefWidth="320"/>
+                    <Button text="Dosya Sec ve Teslim Et" onAction="#handleUpload"/>
+                </HBox>
+
+                <Label text="Duyurular" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="announcementsList" prefHeight="240"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Notlarim / Transkript">
+            <VBox spacing="8">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <Button text="Transkripti Getir" onAction="#handleShowTranscript"/>
+                <Label text="Transkript" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="transcriptList" prefHeight="300"/>
+                <Label fx:id="gpaLabel" text="GANO: -" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

@@ -1,0 +1,14 @@
+
+target/
+serviceAccountKey.json
+
+uploads/
+
+.idea/
+*.iml
+.vscode/
+
+*.class
+
+logs/
+*.log
